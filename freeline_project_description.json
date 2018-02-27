@@ -1,0 +1,128 @@
+{
+    "project_type": "gradle",
+    "android_gradle_plugin_version": "3.0.1",
+    "freeline_gradle_plugin_version": "0.8.8",
+    "java_home": "/Library/Java/JavaVirtualMachines/jdk1.8.0_65.jdk/Contents/Home",
+    "freeline_cache_dir": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp",
+    "auto_dependency": true,
+    "product_flavor": "",
+    "build_script": "./gradlew :app:assembleDebug",
+    "build_script_work_directory": "",
+    "root_dir": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp",
+    "main_project_name": "app",
+    "main_project_dir": "app",
+    "build_directory": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/build",
+    "build_cache_dir": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/build/freeline",
+    "build_tools_version": "26.0.2",
+    "sdk_directory": "/Users/wanglei/Library/Android/sdk",
+    "build_tools_directory": "/Users/wanglei/Library/Android/sdk/build-tools/26.0.2",
+    "compile_sdk_version": "android-26",
+    "compile_sdk_directory": "/Users/wanglei/Library/Android/sdk/platforms/android-26",
+    "package": "online.huihua.suzhou.com.huihuaapp",
+    "debug_package": "online.huihua.suzhou.com.huihuaapp",
+    "main_manifest_path": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/AndroidManifest.xml",
+    "launcher": "online.huihua.suzhou.com.huihuaapp.ui.LoginActivity",
+    "apk_path": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/build/outputs/apk/debug/app-debug.apk",
+    "extra_dep_res_paths": [
+        
+    ],
+    "exclude_dep_res_paths": [
+        
+    ],
+    "main_r_path": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/build/generated/source/r/debug/R.java",
+    "use_jdk8": true,
+    "ignore_resource_ids": [
+        "avd_hide_password_1",
+        "avd_hide_password_2",
+        "avd_hide_password_3",
+        "avd_show_password_1",
+        "avd_show_password_2",
+        "avd_show_password_3"
+    ],
+    "use_system_gradle": false,
+    "check_sources_md5": [
+        
+    ],
+    "main_src_directory": [
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/java",
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/java"
+    ],
+    "main_res_directory": [
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/res",
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/res"
+    ],
+    "main_assets_directory": [
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/assets",
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/assets"
+    ],
+    "main_jni_directory": [
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/jni",
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/jni"
+    ],
+    "main_jniLibs_directory": [
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/jniLibs",
+        "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/jniLibs"
+    ],
+    "project_source_sets": {
+        "app": {
+            "main_src_directory": [
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/java",
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/java"
+            ],
+            "main_res_directory": [
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/res",
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/res"
+            ],
+            "main_assets_directory": [
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/assets",
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/assets"
+            ],
+            "main_jni_directory": [
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/jni",
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/jni"
+            ],
+            "main_jniLibs_directory": [
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/debug/jniLibs",
+                "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/jniLibs"
+            ],
+            "main_manifest_path": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/src/main/AndroidManifest.xml"
+        }
+    },
+    "modules": [
+        {
+            "name": "app",
+            "path": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app"
+        }
+    ],
+    "module_dependencies": {
+        "app": [
+            
+        ]
+    },
+    "databinding": [
+        
+    ],
+    "databinding_modules": [
+        
+    ],
+    "apt": {
+        "app": {
+            "enabled": true,
+            "disableDiscovery": true,
+            "aptOutput": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/build/generated/source/apt/debug",
+            "processorPath": "/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/libs/volley.jar:/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/libs/universal-image-loader-1.9.2.jar:/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/libs/jackson-core-asl-1.9.10.jar:/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/libs/android-async-http-1.4.5.jar:/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/libs/gson-2.2.4.jar:/Users/wanglei/Documents/workspace/suzhouwu/HuihuaApp/app/libs/jackson-mapper-asl-1.9.10.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/butterknife-8.8.1.aar/b2ddceae4b12eb217bdcc56a1e20ab97/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/base-adapter-3.0.3.aar/20760e48b5ee628ba663ed17e797fc9e/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/base-rvadapter-3.0.3.aar/aa6d4de7cc6de9c849f4e99cf5e3c9d2/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/runtime-0.8.8.aar/3e94ab9d2b96714113660c2906eb296d/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/leakcanary-android-1.5.4.aar/da0852b3d4fedc3a2e93a8ff36b179aa/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/multidex-1.0.2.aar/349e16d8b2ca4091dca9ff2e64f5d044/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/appcompat-v7-26.1.0.aar/2facaa263bf2766905d9e552f30e6723/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/constraint-layout-1.0.2.aar/a4fd429bfd66e399a2ad3a3769679d56/jars/classes.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-annotations/8.8.1/bc373fb6bc7bca3035041b924f158fd2b946ee8d/butterknife-annotations-8.8.1.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/animated-vector-drawable-26.1.0.aar/0e13885e6593690add855745cf2cabfa/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/support-vector-drawable-26.1.0.aar/99917c5e2bf4928c951b3d968a8261e2/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/recyclerview-v7-23.4.0.aar/4a5636fd3d03c1a49ac245612a95f866/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/support-v4-26.1.0.aar/0dfa42a0e4e0c5ae84682431d6f8a230/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/support-fragment-26.1.0.aar/136b6936386ea4616d20a18ce4c4e38b/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/support-core-ui-26.1.0.aar/094fb75026521631d7e312e5c8c7c2e7/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/support-media-compat-26.1.0.aar/a4544d63745e9fafedd776c31576ad45/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/support-core-utils-26.1.0.aar/ef453a53d881cce884c2396f950b125d/jars/classes.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/support-compat-26.1.0.aar/d441333cf0d5e8252b39e7be05b91860/jars/classes.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/com.android.support/support-annotations/26.1.0/814258103cf26a15fcc26ecce35f5b7d24b73f8/support-annotations-26.1.0.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/leakcanary-analyzer-1.5.4.aar/f3bda64913a7589197830d651ffe9509/jars/classes.jar:/Users/wanglei/Library/Android/sdk/extras/m2repository/com/android/support/constraint/constraint-layout-solver/1.0.2/constraint-layout-solver-1.0.2.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/com.squareup.leakcanary/leakcanary-watcher/1.5.4/5e3dadce30fd748563219945d867a2e96f287931/leakcanary-watcher-1.5.4.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/com.squareup.haha/haha/2.0.3/640a438d2d415c056ca6a673ac26b183b044e160/haha-2.0.3.jar:/Users/wanglei/.gradle/caches/transforms-1/files-1.1/runtime-1.0.0.aar/ab734239b5263745dfb6d7af3901cd8d/jars/classes.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/android.arch.lifecycle/common/1.0.0/e414a4cb28434e25c4f6aa71426eb20cf4874ae9/common-1.0.0.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/android.arch.core/common/1.0.0/a2d487452376193fc8c103dd2b9bd5f2b1b44563/common-1.0.0.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/com.jakewharton/butterknife-compiler/8.8.1/b2f4505a1babb7b7c11abbbf8ea4c90b18c3aeac/butterknife-compiler-8.8.1.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/com.google.auto/auto-common/0.8/c6f7af0e57b9d69d81b05434ef9f3c5610d498c4/auto-common-0.8.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/com.squareup/javapoet/1.9.0/ecc5cf9c221d55481163e773b24336db149e51/javapoet-1.9.0.jar:/Users/wanglei/Library/Android/sdk/extras/android/m2repository/com/android/support/support-annotations/25.3.0/support-annotations-25.3.0.jar:/Users/wanglei/.gradle/caches/modules-2/files-2.1/com.google.guava/guava/19.0/6ce200f6b23222af3d8abb6b6459e6c44f4bb0e9/guava-19.0.jar",
+            "processor": null,
+            "aptArgs": [
+                
+            ]
+        }
+    },
+    "retrolambda": {
+        
+    },
+    "databinding_compiler_jar": "",
+    "apt_libraries": {
+        "dagger": false,
+        "butterknife": true
+    }
+}

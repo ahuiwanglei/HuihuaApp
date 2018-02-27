@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_denglu">
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:src="@mipmap/login_logo"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/container_w"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="@color/defalut_lable_color"
+                    android:layout_height="wrap_content"
+                    android:text="用户名" />
+
+                <online.huihua.suzhou.com.huihuaapp.view.ClearEditText
+                    android:id="@+id/login_name_et"
+                    style="@style/login_edittext"
+                    android:text="admin"
+                     />
+            </LinearLayout>
+
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:background="#dddddd" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:layout_width="wrap_content"
+                    android:textColor="#67674D"
+                    android:layout_height="wrap_content"
+                    android:text="密码" />
+
+                <online.huihua.suzhou.com.huihuaapp.view.ClearEditText
+                    android:id="@+id/login_pwd_et"
+                    android:inputType="textPassword"
+                    android:text="1"
+                    style="@style/login_edittext" />
+            </LinearLayout>
+            <View
+                android:layout_width="fill_parent"
+                android:layout_height="0.5dip"
+                android:background="#dddddd" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_marginLeft="10dp"
+                    android:textColor="#67674D"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="企业" />
+
+                <online.huihua.suzhou.com.huihuaapp.view.ClearEditText
+                    android:id="@+id/login_company_et"
+                    android:text="1000"
+                    style="@style/login_edittext" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/login_commit_btn"
+            style="@style/default_btn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:text="登录"
+            android:textColor="@color/defalut_lable_color"
+            android:textSize="16dp" />
+    </LinearLayout>
+
+
+</RelativeLayout>

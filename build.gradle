@@ -1,0 +1,37 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+    
+    repositories {
+//        google()
+//        jcenter()
+//        maven {
+//            url 'https://maven.google.com/'
+//            name 'Google'
+//        }
+        google()
+        //如果你的Gradle版本在4.1以下
+        maven { url 'https://maven.google.com' }
+        //如果以上地址链接失败，请替换备用地址'https://dl.google.com/dl/android/maven2/'
+        jcenter()
+        mavenCentral()
+        maven { url "https://jitpack.io" }
+
+    }
+    dependencies {
+        classpath 'com.android.tools.build:gradle:3.0.1'
+        classpath 'com.antfortune.freeline:gradle:0.8.8'
+
+    }
+}
+
+allprojects {
+    repositories {
+        google()
+        jcenter()
+    }
+}
+
+task clean(type: Delete) {
+    delete rootProject.buildDir
+}
