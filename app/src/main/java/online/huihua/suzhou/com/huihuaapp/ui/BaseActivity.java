@@ -20,17 +20,19 @@ import android.widget.TextView;
 import java.text.SimpleDateFormat;
 
 import online.huihua.suzhou.com.huihuaapp.R;
+import online.huihua.suzhou.com.huihuaapp.common.HuihuaConfig;
 import online.huihua.suzhou.com.huihuaapp.util.LogUtil;
+import online.huihua.suzhou.com.huihuaapp.util.SharedPreferenceUtils;
 import online.huihua.suzhou.com.huihuaapp.util.VolleyCallBack;
 
-public abstract class BaseActivity extends Activity implements VolleyCallBack {
+public abstract class BaseActivity<T> extends Activity implements VolleyCallBack<T> {
 
 	public static final String EXITACTION = "com.online.android.subaru.ui.base.notify.exit";
 	private Dialog dialog;
 
 	private TextView tv_title;
 
-	private TextView back;
+	private View back;
 
 	private ImageButton actionBtn;
 
@@ -54,6 +56,13 @@ public abstract class BaseActivity extends Activity implements VolleyCallBack {
 		ImageButton menubtn = (ImageButton) findViewById(R.id.back);
 		if (menubtn != null) {
 			menubtn.setOnClickListener(listener);
+		}
+	}
+
+	public void displayBackBtn(int vis) {
+		ImageButton menubtn = (ImageButton) findViewById(R.id.back);
+		if (menubtn != null) {
+			menubtn.setVisibility(vis);
 		}
 	}
 
@@ -88,7 +97,7 @@ public abstract class BaseActivity extends Activity implements VolleyCallBack {
 	}
 
 	public void initBackBtn() {
-		this.back = (TextView) findViewById(R.id.back);
+		this.back =  findViewById(R.id.back);
 		if (this.back != null) {
 			this.back.setOnClickListener(new OnClickListener() {
 
@@ -151,6 +160,14 @@ public abstract class BaseActivity extends Activity implements VolleyCallBack {
 	protected void onPause() {
 		super.onPause();
 		cancelDialog();
+	}
+
+	public String getUserId(){
+		return SharedPreferenceUtils.getString(this, HuihuaConfig.CONFIGNAME, HuihuaConfig.USERID);
+	}
+
+	public String getCompanyNo(){
+		return SharedPreferenceUtils.getString(this, HuihuaConfig.CONFIGNAME, HuihuaConfig.CompanyNo);
 	}
 
 	/**

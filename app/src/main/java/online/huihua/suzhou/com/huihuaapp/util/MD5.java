@@ -23,6 +23,13 @@ public class MD5 {
 		byte[] bytes = s.digest();
 		return StringBytes.toHexStr(bytes);
 	}
+
+	public static byte[] getMd5Bytes(String source) throws NoSuchAlgorithmException {
+		MessageDigest s = MessageDigest.getInstance("MD5");
+		s.update(source.getBytes());
+		byte[] bytes = s.digest();
+		return bytes;
+	}
 	
 	public static String createMd5Key(){
 		//生成密码和key

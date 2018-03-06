@@ -6,12 +6,17 @@ public class HuihuaConfig {
 
     public static String CONFIGNAME = "config_name";
     public static String TOKENKEY = "token";
+    public static String EncryptKey = "EncryptKey";
     public static String USERID = "UserId";
+    public static String CompanyNo = "CompanyNo";
     public static String Pwd = "Pwd";
+    public static String UserName = "UserName";
+    public static String ReportAuth = "ReportAuth";
 
     public static String REMBERPWD = "rember_pwd";
-    public static String USERNAME = "username";
     public static String PASSWORD = "password";
+
+    public static String DefultSecret = "!9.9^2@*L;qP";
 
 
     public static interface Http {
@@ -19,7 +24,59 @@ public class HuihuaConfig {
 
         public static final String login = baseUrl + "Account/Login";
 
+        public static final String GetUserBaseInfo = baseUrl + "Account/GetUserBaseInfo";
+
         public static final String UpdateAppVersion = "UpdateAppVersion";
+
+        public static final String MainContSelect = baseUrl +"MainCont/Select";
+
+        public static final String MainContDetail = baseUrl + "MainCont/Detail";
+
+        public static final String MainContCheck = baseUrl + "MainCont/Check";
+
+        public static final String ContSelect  = baseUrl + "Cont/Select";
+        public static final String ContDetail = baseUrl +"Cont/Detail";
+        public static final String ContCheck = baseUrl +"Cont/Check";
+
+        public static final String ExtContSelect  = baseUrl + "EXTCont/Select";
+        public static final String ExtContDetail = baseUrl +"EXTCont/Detail";
+        public static final String ExtContCheck = baseUrl +"EXTCont/Check";
+
+
+        //借款
+        public static final String ApplySelect = baseUrl + "APPLY/Select";
+        public static final String ApplyDetail = baseUrl + "APPLY/Detail";
+        public static final String ApplyCheck = baseUrl + "APPLY/Check";
+        public static final String ApplyVeto = baseUrl + "APPLY/Veto/";
+
+        //提前还款
+        public static final String PrePaySelect = baseUrl + "PREPAY/Select";
+        public static final String PrePayDetail = baseUrl + "PREPAY/Detail";
+        public static final String PrePayCheck = baseUrl + "PREPAY/Check";
+        public static final String PrePayVeto = baseUrl + "PREPAY/Veto/";
+
+        //出货申请
+        public static final String ExpmanualSelect = baseUrl + "EXPMANUAL/Select";
+        public static final String ExpmanualDetail = baseUrl + "EXPMANUAL/Detail";
+        public static final String ExpmanualCheck = baseUrl + "EXPMANUAL/Check";
+        public static final String ExpmanualVeto = baseUrl + "EXPMANUAL/Veto/";
+
+        //逾期违约调整
+        public static final String OverdueSelect = baseUrl + "OVERDUE/Select";
+        public static final String OverdueDetail = baseUrl + "OVERDUE/Detail";
+        public static final String OverdueCheck = baseUrl + "OVERDUE/Check";
+        public static final String OverdueVeto = baseUrl + "OVERDUE/Veto/";
+
+        //保证金退还
+        public static final String DepositSelect = baseUrl + "DEPOSIT/Select";
+        public static final String DepositDetail = baseUrl + "DEPOSIT/Detail";
+        public static final String DepositCheck = baseUrl + "DEPOSIT/Check";
+        public static final String DepositVeto = baseUrl + "DEPOSIT/Veto/";
+
+
+        public static final String  GetReport = baseUrl + "Account/GetReport";
+
+        public static final String GetOwnerInfo = baseUrl + "Account/GetOwnerInfo";
 
         //获取员工仓库数据权限 所有参数都非明文
         public static final String userLoc = baseUrl + "AccountRole/GetUserLoc?WorkerNo=%s";
@@ -67,5 +124,6 @@ public class HuihuaConfig {
 
         public static final int HttpSucessCode = 0;
         public static final int HttpErrorCode = -1;
+        public static final int HttpCommonCode = 1;
     }
 }

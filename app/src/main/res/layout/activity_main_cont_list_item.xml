@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="主合同号"
+                style="@style/list_item_lable_big_size"/>
+
+            <TextView
+                android:id="@+id/tv_MAINCONT_NO"
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:layout_height="wrap_content"
+                style="@style/list_item_value_big_size" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="客户"
+                style="@style/list_item_lable_small_size" />
+
+            <TextView
+                android:id="@+id/tv_OWNER_NAME"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="5dp"
+                android:text="65*59*67cm"
+                style="@style/list_item_value_small_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="授信额度"
+                style="@style/list_item_lable_small_size" />
+
+            <TextView
+                android:id="@+id/tv_CREDITLINE"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65*59*67cm"
+                android:layout_marginLeft="5dp"
+                style="@style/list_item_value_small_size" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:text="状态"
+                style="@style/list_item_lable_small_size" />
+
+            <TextView
+                android:id="@+id/tv_STATUS"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="65*59*67cm"
+                android:layout_marginLeft="5dp"
+                style="@style/list_item_value_small_size" />
+
+        </LinearLayout>
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>

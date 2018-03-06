@@ -13,7 +13,7 @@ import javax.crypto.spec.IvParameterSpec;
 public class Des {
 	private static byte[] Keys = { 0x12, 0x34, 0x56, 0x78, (byte) 0x90,
 			(byte) 0xAB, (byte) 0xCD, (byte) 0xEF };
-	private static String password = "!9.9^2@*L;qP";
+//	private static String password = "!9.9^2@*L;qP";
 	// 测试
 	public static void main(String args[]) {
 		// 待加密内容
@@ -25,18 +25,20 @@ public class Des {
 //		} catch (NoSuchAlgorithmException e) {
 //			e.printStackTrace();
 //		}
-		System.out.println("MD5：" + str);
-		byte[] result = encrypt(str.getBytes(), password);
-		System.out.println("加密后：" + StringBytes.toHexStr(result));
+
 		// 直接将如上内容解密
 		try {
-			byte[] decryResult = decrypt(result, password);
+			System.out.println("MD5：" + str);
+			byte[] result = decryptBytes(str.getBytes(), "!9.9^2@*L;qP");
+			System.out.println("加密后：" + StringBytes.toHexStr(result));
+
+			byte[] decryResult = decryptBytes(result, "!9.9^2@*L;qP");
 			System.out.println("解密参数：" + new String(decryResult));
 
 			String str2 = "CF16C403D5D4E48B542D7F4C287FD69346898740A646B04D34E2F42D94F113293D84AE8AD82F0258072A94926D7B34120AC2283825D2F8A95CA07B7F963D762E8DF797568679346CA886D5C0BB0F99894A7F2A4AFBDAE95A659666CCAEA3199CC074D3435F2F0F7E7D80EF4608DBA40DE0699B5CDBB664056A8C7B2FDC10A7C427B77B37578DE5E8180943D0E92E1E172E652490F79DD7876E1B43DA71E82989D3E56EFC87C8DDB1D4B025224F80B12F";
 			
 		    System.out.println("解密返回值："
-					+ new String(decrypt(StringBytes.hexStr2Bytes(str2), password)));
+					+ new String(decrypt(StringBytes.hexStr2Bytes(str2), "!9.9^2@*L;qP")));
 		} catch (Exception e1) {
 			e1.printStackTrace();
 		}
@@ -48,14 +50,14 @@ public class Des {
 	 * @param str
 	 * @return
 	 */
-	public static String encrypt(String str){
+	public static String encrypt(String str, String password){
 		byte[] bytes = encrypt(str.getBytes(), password);
 		return StringBytes.toHexStr(bytes);
 	}
 
-	public static String decrypt(byte[] b){
+	public static String decrypt(byte[] b, String password){
 		try {
-			byte[] bytes = decrypt(b, password);
+			byte[] bytes = decryptBytes(b, password);
 			return new String(bytes);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -103,7 +105,7 @@ public class Des {
 	 * @return byte[]
 	 * @throws Exception
 	 */
-	public static byte[] decrypt(byte[] src, String password) throws Exception {
+	public static byte[] decryptBytes(byte[] src, String password) throws Exception {
 		// DES算法要求有一个可信任的随机数源
 		SecureRandom random = new SecureRandom();
 		// 创建一个DESKeySpec对象

@@ -18,6 +18,32 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".ui.MainActivity" />
+        <activity android:name=".ui.maincont.MainContListActivity" />
+        <activity android:name=".ui.cont.ContListActivity" />
+        <activity android:name=".ui.maincont.MainContReviewActivity" android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity android:name=".ui.cont.ContReviewActivity" android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity android:name=".ui.cont.ExtContListActivity"  />
+        <activity android:name=".ui.cont.ExtContReviewActivity" android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+        <activity android:name=".ui.loan.LoanApplyListActivity"  />
+        <activity android:name=".ui.loan.LoadApplyReviewActivity" android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity android:name=".ui.loan.PrePayListActivity" />
+        <activity android:name=".ui.loan.PrePayReviewActivity" android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+
+        <activity android:name=".ui.loan.DepositListActivity" />
+        <activity android:name=".ui.loan.DepositReviewActivity" android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+        <activity android:name=".ui.loan.ExpmanualListActivity" />
+        <activity android:name=".ui.loan.ExpmanualReviewActivity" android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+
+        <activity android:name=".ui.loan.OverdueListActivity" />
+        <activity android:name=".ui.loan.OverdueReviewActivity" android:windowSoftInputMode="adjustResize|stateAlwaysHidden" />
+
+
+        <activity android:name=".ui.StatisticsActivity" />
     </application>
 
 </manifest>

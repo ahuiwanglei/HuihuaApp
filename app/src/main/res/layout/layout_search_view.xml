@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:background="@color/white"
+    android:gravity="center_vertical"
+
+    android:orientation="horizontal">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="5dp"
+        android:text="客户"
+        android:textColor="@color/balck"
+        android:textSize="16sp" />
+
+    <TextView
+        android:id="@+id/tv_select_owner"
+        android:layout_width="0dp"
+        android:layout_height="30dp"
+        android:layout_marginLeft="5dp"
+        android:maxLength="9"
+        android:layout_weight="1"
+        android:textSize="12sp"
+        android:background="@drawable/white_side_arrow"
+        android:gravity="center_vertical"
+        android:hint="点击选择客户"
+        android:paddingLeft="4dp"
+        android:paddingRight="5dp" />
+
+    <RadioGroup android:id="@+id/rg_status"
+        android:layout_marginLeft="5dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
+
+        <RadioButton android:id="@+id/rb_dsh"
+            style="@style/MyCheckBox"
+            android:textSize="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="待审核" />
+
+        <RadioButton
+            android:id="@+id/rb_qb"
+            style="@style/MyCheckBox"
+            android:textSize="10dp"
+            android:checked="true"
+            android:layout_marginLeft="2dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="全部" />
+    </RadioGroup>
+    
+    <Button android:id="@+id/btn_search"
+        android:text="查询"
+        android:layout_width="60dp"
+        android:layout_height="40dp" />
+
+</LinearLayout>

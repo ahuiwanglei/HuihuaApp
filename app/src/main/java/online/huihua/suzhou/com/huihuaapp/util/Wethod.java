@@ -87,32 +87,37 @@ public class Wethod {
 
     /**
      * int DEPRECATED_GET_OR_POST = -1;
-     int GET = 0;
-     int POST = 1;
-     int PUT = 2;
-     int DELETE = 3;
-     int HEAD = 4;
-     int OPTIONS = 5;
-     int TRACE = 6;
-     int PATCH = 7;
+     * int GET = 0;
+     * int POST = 1;
+     * int PUT = 2;
+     * int DELETE = 3;
+     * int HEAD = 4;
+     * int OPTIONS = 5;
+     * int TRACE = 6;
+     * int PATCH = 7;
+     *
      * @param method
      * @param context
      * @param resultCode
      * @param url
-     * @param requestBody
+     * @param body
      * @param callBack
      */
-    public static void jsonPost(int method, final Context context, final int resultCode, String url, final String requestBody, final VolleyCallBack<String> callBack)
-    {
-        LogUtil.print(url+": "+ requestBody+"");
+    public static void jsonPost(int method, final Context context, final int resultCode, String url, final String body, final VolleyCallBack<String> callBack) {
+        final String password = SharedPreferenceUtils.getString(context, HuihuaConfig.CONFIGNAME, HuihuaConfig.EncryptKey);
+        final String requestBody = Des.encrypt(body, password);
+        LogUtil.print("请求地址：" + url );
+        LogUtil.print("加密前：" + body);
+        LogUtil.print("加密后：" + requestBody);
+
         JsonRequest jsonRequest = new JsonRequest(method, url, requestBody,
                 new Response.Listener() {
 
-            @Override
-            public void onResponse(Object result) {
-                callBack.onSuccess(resultCode, result.toString());
-            }
-        }, new Response.ErrorListener() {
+                    @Override
+                    public void onResponse(Object result) {
+                        callBack.onSuccess(resultCode, result.toString());
+                    }
+                }, new Response.ErrorListener() {
             @Override
             public void onErrorResponse(VolleyError volleyError) {
                 callBack.onError(volleyError);
@@ -123,30 +128,39 @@ public class Wethod {
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
                 String jsonString = new String(response.data);
                 LogUtil.print("未解密前：" + jsonString.toString());
-                String decrypt =  Des.decrypt(StringBytes.hexStr2Bytes(jsonString.toString()));
+
+                String decrypt = Des.decrypt(StringBytes.hexStr2Bytes(jsonString.toString()), password);
                 LogUtil.print("解密后：" + decrypt);
                 JSONObject jsonObject = null;
                 try {
                     jsonObject = new JSONObject(decrypt);
                     if (jsonObject.getInt("ActionResults") == HuihuaConfig.Http.HttpErrorCode) {
-                       return Response.error(new VolleyError("返回内容不是预期结果", new Throwable(jsonObject.getString("ErrorDesc"))));
-                    }else{
-                        return Response.success(jsonString,
-                                HttpHeaderParser.parseCacheHeaders(response));
+                        return Response.error(new VolleyError("返回内容不是预期结果", new Throwable(jsonObject.getString("ErrorDesc"))));
+                    } else {
+                        return Response.success(decrypt, HttpHeaderParser.parseCacheHeaders(response));
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
                 return Response.error(new VolleyError("json解析错误", new Throwable("json解析错误，请返回正确的json格式")));
             }
+
             @Override
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> map = new HashMap<String, String>();
-                map.put("AppID", "MOBILE_SCFAPP");
-//                map.put("TimeStamp", System.currentTimeMillis()+"");
-//                map.put("NonceInt", StringUtil.randomInt()+"");
-//                map.put("NonceChar", StringUtil.uuid().substring(8));
-//                map.put("Content-Type","application/json");
+
+                String tokenKey = SharedPreferenceUtils.getString(context, HuihuaConfig.CONFIGNAME, HuihuaConfig.TOKENKEY);
+                if (StringUtil.isNotEmpty(tokenKey)) {
+                    map.put("AccessToken", tokenKey);
+                } else {
+                    map.put("AppID", "MOBILE_SCFAPP");
+                    map.put("AppSecret", SharedPreferenceUtils.getString(context, HuihuaConfig.CONFIGNAME, HuihuaConfig.EncryptKey));
+                    map.put("TimeStamp", System.currentTimeMillis() + "");
+                    map.put("NonceInt", StringUtil.randomInt() + "");
+                    map.put("NonceChar", StringUtil.uuid().substring(8));
+                    map.put("Signature", RSAUils.getSign(map, body));
+                }
+
                 return map;
             }
         };
@@ -201,11 +215,11 @@ public class Wethod {
             public Map<String, String> getHeaders() throws AuthFailureError {
                 Map<String, String> map = new HashMap<String, String>();
                 map.put("AppID", "MOBILE_SCFAPP");
-                map.put("TimeStamp", System.currentTimeMillis()+"");
-                map.put("NonceInt", StringUtil.randomInt()+"");
+                map.put("TimeStamp", System.currentTimeMillis() + "");
+                map.put("NonceInt", StringUtil.randomInt() + "");
                 map.put("NonceChar", StringUtil.uuid().substring(8));
-                map.put("Signature", StringUtil.createSign("","","",""));
-                map.put("Content-Type","application/json");
+                map.put("Signature", StringUtil.createSign("", "", "", ""));
+                map.put("Content-Type", "application/json");
                 return map;
             }
         };

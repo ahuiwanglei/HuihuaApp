@@ -9,4 +9,6 @@
     <color name="balck">#000000</color>
     <color name="dark_black">#666666</color>
     <color name="defalut_lable_color">#67674D</color>
+    <color name="gray" >#cccccc</color>
+    <color name="default_red">#FF4081</color>
 </resources>

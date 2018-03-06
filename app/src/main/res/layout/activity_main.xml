@@ -1,24 +1,234 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@drawable/bg_denglu"
     android:orientation="vertical">
 
-    <TextView android:id="@+id/text1"
-        android:layout_width="wrap_content"
-        android:clickable="true"
+    <include
+        android:id="@+id/content_head"
+        layout="@layout/head_nav" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Hello World1121211!" />
+        android:layout_below="@+id/content_head"
+        android:orientation="vertical">
 
-    <TextView android:id="@+id/text32"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello World!" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center"
+            android:orientation="vertical">
 
-    <TextView android:id="@+id/tex33"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Hello !11111121312321312" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="穗华"
+                android:textColor="@color/balck"
+                android:textSize="14sp" />
+
+            <TextView android:id="@+id/tv_username"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:text="张三，欢迎你"
+                android:textColor="@color/balck"
+                android:textSize="14sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/layout_menu1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu1" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="主合同审核" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_menu2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu2" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="子合同审核" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_menu3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
 
 
-</LinearLayout>
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu3" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="展期合同审核" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/layout_menu4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu4" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="借款申请审批" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_menu5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu5" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="提前还款审批" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_menu6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu6" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="出货审批" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <LinearLayout
+                android:id="@+id/layout_menu7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu7" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="逾期调整审批" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_menu8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu8" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="保证金退还审批" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layout_menu9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical">
+
+
+                <ImageView
+                    style="@style/home_menu_img"
+                    android:src="@mipmap/menu9" />
+
+                <TextView
+                    style="@style/home_menu_lable"
+                    android:text="汇总查询" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <ImageView android:id="@+id/imageViewBtn"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginBottom="10dp"
+        android:layout_marginRight="10dp"
+        android:scaleType="fitXY"
+        android:src="@mipmap/gif_47_101" />
+
+
+</RelativeLayout>
