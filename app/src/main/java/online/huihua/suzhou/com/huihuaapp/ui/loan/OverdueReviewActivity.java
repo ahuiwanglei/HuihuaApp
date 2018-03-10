@@ -73,6 +73,10 @@ public class OverdueReviewActivity extends BaseReviewActivity {
     public void onSuccess(int reqcode, Object result) {
         if (reqcode == GET_Data_Tag) {
             OverdueDetailResultData contDetailResultData = ObjectMapperFactory.convertJsonToObject(result.toString(), OverdueDetailResultData.class);
+            if(contDetailResultData.getActionResults() ==HuihuaConfig.Http.HttpCommonCode){
+                ToastUtils.show(this, contDetailResultData.getErrorDesc());
+                return;
+            }
             OverdueDetailResultData.ActionResultsListBean bean = contDetailResultData.getActionResultsList().get(0);
 
             itemList.add(new ItemDataInfo("单号", bean.getSHEET_ID(), bean.getSHEET_ID()));

@@ -73,6 +73,10 @@ public class LoadApplyReviewActivity extends BaseReviewActivity {
     public void onSuccess(int reqcode, Object result) {
         if (reqcode == GET_Data_Tag) {
             LoanApplyDetailResultData loanApplyDetailResultData = ObjectMapperFactory.convertJsonToObject(result.toString(), LoanApplyDetailResultData.class);
+            if(loanApplyDetailResultData.getActionResults() ==HuihuaConfig.Http.HttpCommonCode){
+                ToastUtils.show(this, loanApplyDetailResultData.getErrorDesc());
+                return;
+            }
             LoanApplyDetailResultData.ActionResultsListBean bean = loanApplyDetailResultData.getActionResultsList().get(0);
 //            "单号   SHEET_ID
 //            单据日期 SHEET_DATE

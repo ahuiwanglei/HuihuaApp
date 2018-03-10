@@ -122,8 +122,8 @@ public class HuihuaConfig {
         //未审核订单详情
         public static final String getOrderDetailUnAduit = baseUrl + "Orders/GetOrderDetailUnAduit?LocNo=%s&OwnerNo=%s&SheetID=%s&Page_No=1&Page_Size=100000";
 
-        public static final int HttpSucessCode = 0;
+        public static final int HttpCommonCode = 0;
         public static final int HttpErrorCode = -1;
-        public static final int HttpCommonCode = 1;
+        public static final int HttpSucessCode = 1;
     }
 }

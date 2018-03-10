@@ -56,7 +56,7 @@ public class MainActivity extends BaseActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
-        setTitle("穗华供应链金额管理系统");
+        setTitle("供应链金融管理系统");
 
         displayBackBtn(View.GONE);
 

@@ -51,7 +51,7 @@ import online.huihua.suzhou.com.huihuaapp.ui.BaseActivity;
 import online.huihua.suzhou.com.huihuaapp.view.ToastUtils;
 
 /**
- * Created by 涂有泽 .
+ * Created by wanglei .
  * Date by 2016/3/8
  * Use by 公共方法
  */

@@ -73,6 +73,10 @@ public class ExpmanualReviewActivity extends BaseReviewActivity {
     public void onSuccess(int reqcode, Object result) {
         if (reqcode == GET_Data_Tag) {
             ExpmanualDetailResultData contDetailResultData = ObjectMapperFactory.convertJsonToObject(result.toString(), ExpmanualDetailResultData.class);
+            if(contDetailResultData.getActionResults() ==HuihuaConfig.Http.HttpCommonCode){
+                ToastUtils.show(this, contDetailResultData.getErrorDesc());
+                return;
+            }
             ExpmanualDetailResultData.ActionResultsListBean bean = contDetailResultData.getActionResultsList().get(0);
 //            "单号 SHEET_ID
 //            仓别 LOCNO

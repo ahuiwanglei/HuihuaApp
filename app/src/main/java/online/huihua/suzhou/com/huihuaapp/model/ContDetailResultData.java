@@ -96,6 +96,60 @@ public class ContDetailResultData {
         private String CHECKUP_DATE;
         private String STATUS;
         private String CHECK_MEMO;
+        private String PERIOD;
+        private String REPAY_DATE;
+        private String PRINCIPAL;
+        private String REALPAY_DATE;
+        private String REALPAY_AMT;
+        private String REALPREPAY_CPS;
+
+        public String getPERIOD() {
+            return PERIOD;
+        }
+
+        public void setPERIOD(String PERIOD) {
+            this.PERIOD = PERIOD;
+        }
+
+        public String getREPAY_DATE() {
+            return REPAY_DATE;
+        }
+
+        public void setREPAY_DATE(String REPAY_DATE) {
+            this.REPAY_DATE = REPAY_DATE;
+        }
+
+        public String getPRINCIPAL() {
+            return PRINCIPAL;
+        }
+
+        public void setPRINCIPAL(String PRINCIPAL) {
+            this.PRINCIPAL = PRINCIPAL;
+        }
+
+        public String getREALPAY_DATE() {
+            return REALPAY_DATE;
+        }
+
+        public void setREALPAY_DATE(String REALPAY_DATE) {
+            this.REALPAY_DATE = REALPAY_DATE;
+        }
+
+        public String getREALPAY_AMT() {
+            return REALPAY_AMT;
+        }
+
+        public void setREALPAY_AMT(String REALPAY_AMT) {
+            this.REALPAY_AMT = REALPAY_AMT;
+        }
+
+        public String getREALPREPAY_CPS() {
+            return REALPREPAY_CPS;
+        }
+
+        public void setREALPREPAY_CPS(String REALPREPAY_CPS) {
+            this.REALPREPAY_CPS = REALPREPAY_CPS;
+        }
 
         public String getCHECK_MEMO() {
             return CHECK_MEMO;

@@ -72,6 +72,10 @@ public class PrePayReviewActivity extends BaseReviewActivity {
     public void onSuccess(int reqcode, Object result) {
         if (reqcode == GET_Data_Tag) {
             ContDetailResultData contDetailResultData = ObjectMapperFactory.convertJsonToObject(result.toString(), ContDetailResultData.class);
+            if(contDetailResultData.getActionResults() == HuihuaConfig.Http.HttpCommonCode){
+                ToastUtils.show(this, contDetailResultData.getErrorDesc());
+                return;
+            }
             ContDetailResultData.ActionResultsListBean bean = contDetailResultData.getActionResultsList().get(0);
             itemList.add(new ItemDataInfo("客户", bean.getOWNER_NAME(), bean.getOWNER_NAME()));
             itemList.add(new ItemDataInfo("行业", bean.getINDUSTRY_NAME(), bean.getINDUSTRY_NAME()));
@@ -111,33 +115,34 @@ public class PrePayReviewActivity extends BaseReviewActivity {
             itemList.add(new ItemDataInfo("状态", ContStatusEnum.findKey(bean.getSTATUS()).getName(), bean.getSTATUS()));
             itemList.add(new ItemDataInfo("审核意见", bean.getCHECK_MEMO(), bean.getCHECK_MEMO()));
 
-//            "期数 PERIOD
+//           "期数 PERIOD
 //            预计还款日 REPAY_DATE
 //            本金 PRINCIPAL
 //            实际还款日 REALPAY_DATE
 //            实收金额 REALPAY_AMT
 //            实收补偿金 REALPREPAY_CPS"
-//            List<String> header = new ArrayList<>();
-//            header.add("期数");
-//            header.add("预计还款日");
-//            header.add("本金");
-//            header.add("实际还款日");
-//            header.add("实收金额");
-//            header.add("实收补偿金");
-//
-//            List<List<String>> datas = new ArrayList<>();
-//            for (int i=0;i< contDetailResultData.getActionResultsList().size();i++){
-//                ContDetailResultData.ActionResultsListBean bean11 = contDetailResultData.getActionResultsList().get(i);
-//                List<String> data = new ArrayList<>();
-//                data.add(bean11.getBORROW_PERIOD());
-//                data.add(bean11.getPeP());
-//                data.add(bean11.getPRI());
-//                data.add(bean11.getRET_QTY());
-//                data.add(bean11.getBOXIMPAWN_PRICE());
-//                data.add(bean11.getIMPAWN_AMT());
-//                datas.add(data);
-//            }
-//            tableDataList = new TableData(header, datas);
+            List<String> header = new ArrayList<>();
+            header.add("期数");
+            header.add("预计还款日");
+            header.add("本金");
+            header.add("实际还款日");
+            header.add("实收金额");
+            header.add("实收补偿金");
+
+            List<List<String>> datas = new ArrayList<>();
+            for (int i=0;i< contDetailResultData.getActionResultsList().size();i++){
+                ContDetailResultData.ActionResultsListBean bean11 = contDetailResultData.getActionResultsList().get(i);
+                List<String> data = new ArrayList<>();
+                data.add(bean11.getBORROW_PERIOD());
+                data.add(bean11.getPERIOD());
+                data.add(bean11.getREPAY_DATE());
+                data.add(bean11.getPRINCIPAL());
+                data.add(bean11.getREALPAY_DATE());
+                data.add(bean11.getREALPAY_AMT());
+                data.add(bean11.getREALPREPAY_CPS());
+                datas.add(data);
+            }
+            tableDataList = new TableData(header, datas);
 
             notifyDataSetChanged();
             if(ApplyStatusEnum.ReviewPass.getValue().equals(bean.getSTATUS())){
