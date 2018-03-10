@@ -69,6 +69,10 @@ public class ContReviewActivity extends BaseReviewActivity {
     public void onSuccess(int reqcode, Object result) {
         if (reqcode == GET_Data_Tag) {
             ContDetailResultData contDetailResultData = ObjectMapperFactory.convertJsonToObject(result.toString(), ContDetailResultData.class);
+            if(contDetailResultData.getActionResults() ==HuihuaConfig.Http.HttpCommonCode){
+                ToastUtils.show(this, contDetailResultData.getErrorDesc());
+                return;
+            }
             ContDetailResultData.ActionResultsListBean bean = contDetailResultData.getActionResultsList().get(0);
             itemList.add(new ItemDataInfo("客户", bean.getOWNER_NAME(), bean.getOWNER_NAME()));
             itemList.add(new ItemDataInfo("行业", bean.getINDUSTRY_NAME(), bean.getINDUSTRY_NAME()));
