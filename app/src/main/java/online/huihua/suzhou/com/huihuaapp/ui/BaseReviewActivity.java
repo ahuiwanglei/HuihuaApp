@@ -1,5 +1,6 @@
 package online.huihua.suzhou.com.huihuaapp.ui;
 
+import android.app.ActionBar;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Handler;
 import android.view.View;
@@ -7,6 +8,8 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 
 import com.android.volley.Request;
@@ -19,6 +22,7 @@ import java.util.List;
 
 import online.huihua.suzhou.com.huihuaapp.R;
 import online.huihua.suzhou.com.huihuaapp.common.HuihuaConfig;
+import online.huihua.suzhou.com.huihuaapp.util.DensityUtil;
 import online.huihua.suzhou.com.huihuaapp.util.LogUtil;
 import online.huihua.suzhou.com.huihuaapp.util.Wethod;
 
@@ -32,6 +36,8 @@ public abstract class BaseReviewActivity extends BaseActivity {
     public final int Post_Review_Tag = 1001;
 
     protected List<ItemDataInfo> itemList = new ArrayList<>();
+
+    protected TableData tableDataList = null;
     Button review_commit_btn;
     protected Button veto_commit_btn;
     LinearLayout layout_review;
@@ -56,6 +62,8 @@ public abstract class BaseReviewActivity extends BaseActivity {
             tv_value.setText(itemList.get(i).lable);
             linearLayout.addView(view);
         }
+
+        initTableInfos();
     }
 
     private void initReviewBtn(int vis) {
@@ -131,6 +139,40 @@ public abstract class BaseReviewActivity extends BaseActivity {
     }
 
     /**
+     * 详情
+     */
+    public void initTableInfos() {
+        if (tableDataList != null) {
+            findViewById(R.id.linear_infos).setVisibility(View.VISIBLE);
+            TableLayout table_infos = (TableLayout) findViewById(R.id.table_infos);
+//            TableRow tableRow = (TableRow)findViewById(R.id.table_head_views);
+            if (table_infos != null) {
+                //生成header
+                TableRow tableRow = (TableRow) getLayoutInflater().inflate(R.layout.activity_review_item_table_row_item, null);
+                for (int i = 0; i < tableDataList.getHeaders().size(); i++) {
+                    TextView textView = (TextView) getLayoutInflater().inflate(R.layout.activity_review_item_header, null);
+                    textView.setText(tableDataList.getHeaders().get(i));
+                    tableRow.addView(textView);
+                }
+                table_infos.addView(tableRow);
+
+                for (int i = 0; i < tableDataList.getDatas().size(); i++) {
+                    TableRow tableRow1 = (TableRow) getLayoutInflater().inflate(R.layout.activity_review_item_table_row_item, null);
+                    for (int j = 0; j < tableDataList.getDatas().get(i).size(); j++) {
+                        TextView textView = (TextView) getLayoutInflater().inflate(R.layout.activity_review_item_table_row, null);
+                        textView.setText(tableDataList.getDatas().get(i).get(j));
+                        tableRow1.addView(textView);
+                    }
+                    table_infos.addView(tableRow1);
+                }
+
+            }
+        }
+
+    }
+
+
+    /**
      * 获取详情
      *
      * @return
@@ -149,4 +191,32 @@ public abstract class BaseReviewActivity extends BaseActivity {
         }
 
     }
+
+    public class TableData {
+        public List<String> headers;
+        public List<List<String>> datas;
+
+        public TableData(List<String> headers, List<List<String>> datas) {
+            this.headers = headers;
+            this.datas = datas;
+        }
+
+        public List<String> getHeaders() {
+            return headers;
+        }
+
+        public void setHeaders(List<String> headers) {
+            this.headers = headers;
+        }
+
+        public List<List<String>> getDatas() {
+            return datas;
+        }
+
+        public void setDatas(List<List<String>> datas) {
+            this.datas = datas;
+        }
+    }
+
+
 }

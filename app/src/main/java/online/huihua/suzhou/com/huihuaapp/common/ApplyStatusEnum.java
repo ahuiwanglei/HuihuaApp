@@ -17,7 +17,7 @@ public enum ApplyStatusEnum {
     Reviewing("16","作废"),
     ReviewPass("21", "审批中"),
     CheckFinish("22","审批通过"),
-    SaveFinish("23", "审批通过");
+    SaveFinish("23", "否决");
 
     private String value;
     private String name;

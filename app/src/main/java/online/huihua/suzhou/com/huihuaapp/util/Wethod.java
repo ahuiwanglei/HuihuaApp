@@ -47,6 +47,7 @@ import online.huihua.suzhou.com.huihuaapp.R;
 import online.huihua.suzhou.com.huihuaapp.app.MyApplication;
 import online.huihua.suzhou.com.huihuaapp.common.HuihuaConfig;
 import online.huihua.suzhou.com.huihuaapp.model.RespBase;
+import online.huihua.suzhou.com.huihuaapp.ui.BaseActivity;
 import online.huihua.suzhou.com.huihuaapp.view.ToastUtils;
 
 /**
@@ -128,8 +129,15 @@ public class Wethod {
             protected Response<String> parseNetworkResponse(NetworkResponse response) {
                 String jsonString = new String(response.data);
                 LogUtil.print("未解密前：" + jsonString.toString());
-
-                String decrypt = Des.decrypt(StringBytes.hexStr2Bytes(jsonString.toString()), password);
+                String decrypt = null;
+                if(response.statusCode == 203){
+                    SharedPreferenceUtils.clear(context, HuihuaConfig.CONFIGNAME);
+                    Intent intent = new Intent();
+                    intent.setAction(BaseActivity.EXITACTION);
+                    context.sendBroadcast(intent);
+                }else{
+                    decrypt = Des.decrypt(StringBytes.hexStr2Bytes(jsonString.toString()), password);
+                }
                 LogUtil.print("解密后：" + decrypt);
                 JSONObject jsonObject = null;
                 try {

@@ -9,6 +9,9 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import online.huihua.suzhou.com.huihuaapp.R;
 import online.huihua.suzhou.com.huihuaapp.common.ApplyStatusEnum;
@@ -16,6 +19,7 @@ import online.huihua.suzhou.com.huihuaapp.common.ContStatusEnum;
 import online.huihua.suzhou.com.huihuaapp.common.HuihuaConfig;
 import online.huihua.suzhou.com.huihuaapp.model.CommonResultData;
 import online.huihua.suzhou.com.huihuaapp.model.ContDetailResultData;
+import online.huihua.suzhou.com.huihuaapp.model.LoanApplyDetailResultData;
 import online.huihua.suzhou.com.huihuaapp.model.OverdueDetailResultData;
 import online.huihua.suzhou.com.huihuaapp.ui.BaseReviewActivity;
 import online.huihua.suzhou.com.huihuaapp.util.LogUtil;
@@ -79,8 +83,29 @@ public class OverdueReviewActivity extends BaseReviewActivity {
 //
             itemList.add(new ItemDataInfo("逾期利息", bean.getOVERDUE_PROP(), bean.getOVERDUE_PROP()));
             itemList.add(new ItemDataInfo("审批状态", bean.getCHECK_STATUS(), bean.getCHECK_STATUS()));
-            itemList.add(new ItemDataInfo("状态", ContStatusEnum.findKey(bean.getSTATUS()).getName(), bean.getSTATUS()));
+            itemList.add(new ItemDataInfo("状态", ApplyStatusEnum.findKey(bean.getSTATUS()).getName(), bean.getSTATUS()));
             itemList.add(new ItemDataInfo("审核意见", bean.getCHECK_MEMO(), bean.getCHECK_MEMO()));
+
+            List<String> header = new ArrayList<>();
+            header.add("期数");
+            header.add("未还金额");
+            header.add("逾期天数");
+            header.add("计算逾期利息");
+            header.add("调整逾期利息");
+
+            List<List<String>> datas = new ArrayList<>();
+            for (int i=0;i< contDetailResultData.getActionResultsList().size();i++){
+                OverdueDetailResultData.ActionResultsListBean bean11 = contDetailResultData.getActionResultsList().get(i);
+                List<String> data = new ArrayList<>();
+                data.add(bean11.getPERIOD());
+                data.add(bean11.getUNPAY_AMT());
+                data.add(bean11.getOVERDUE_DAY());
+                data.add(bean11.getOVERDUE_CAL());
+                data.add(bean11.getOVERDUE_ADJ());
+                datas.add(data);
+            }
+            tableDataList = new TableData(header, datas);
+
             notifyDataSetChanged();
             if(ApplyStatusEnum.ReviewPass.getValue().equals(bean.getSTATUS())){
                 initReviewBtn(View.VISIBLE, false);
@@ -103,7 +128,7 @@ public class OverdueReviewActivity extends BaseReviewActivity {
     public void postHttpReview() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("CONT_NO", CONT_NO);
+            jsonObject.put("Sheet_id", CONT_NO);
             jsonObject.put("UserID", getUserId());
             jsonObject.put("CompanyNo", getCompanyNo());
             jsonObject.put("Check_opinion", getCheckOpinion());
@@ -118,7 +143,7 @@ public class OverdueReviewActivity extends BaseReviewActivity {
     public void postHttpVeto() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("CONT_NO", CONT_NO);
+            jsonObject.put("Sheet_id", CONT_NO);
             jsonObject.put("UserID", getUserId());
             jsonObject.put("CompanyNo", getCompanyNo());
             jsonObject.put("Check_opinion", getCheckOpinion());

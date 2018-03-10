@@ -27,7 +27,7 @@ import online.huihua.suzhou.com.huihuaapp.util.VolleyCallBack;
 
 public abstract class BaseActivity<T> extends Activity implements VolleyCallBack<T> {
 
-	public static final String EXITACTION = "com.online.android.subaru.ui.base.notify.exit";
+	public static final String EXITACTION = "online.huihua.suzhou.com.huihuaapp.notify.exit";
 	private Dialog dialog;
 
 	private TextView tv_title;

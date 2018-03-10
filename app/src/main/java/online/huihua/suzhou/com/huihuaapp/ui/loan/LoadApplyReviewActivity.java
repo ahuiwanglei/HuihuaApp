@@ -9,6 +9,9 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import online.huihua.suzhou.com.huihuaapp.R;
 import online.huihua.suzhou.com.huihuaapp.common.ApplyStatusEnum;
@@ -16,6 +19,7 @@ import online.huihua.suzhou.com.huihuaapp.common.ContStatusEnum;
 import online.huihua.suzhou.com.huihuaapp.common.HuihuaConfig;
 import online.huihua.suzhou.com.huihuaapp.model.CommonResultData;
 import online.huihua.suzhou.com.huihuaapp.model.ContDetailResultData;
+import online.huihua.suzhou.com.huihuaapp.model.LoadApplyResultData;
 import online.huihua.suzhou.com.huihuaapp.model.LoanApplyDetailResultData;
 import online.huihua.suzhou.com.huihuaapp.ui.BaseReviewActivity;
 import online.huihua.suzhou.com.huihuaapp.util.LogUtil;
@@ -99,8 +103,39 @@ public class LoadApplyReviewActivity extends BaseReviewActivity {
             itemList.add(new ItemDataInfo("剩余额度", bean.getCREDITLINE_ABLE(), bean.getCREDITLINE_ABLE()));
             itemList.add(new ItemDataInfo("审批状态", bean.getCHECK_STATUS(), bean.getCHECK_STATUS()));
 
-            itemList.add(new ItemDataInfo("状态", ContStatusEnum.findKey(bean.getSTATUS()).getName(), bean.getSTATUS()));
+            itemList.add(new ItemDataInfo("状态", ApplyStatusEnum.findKey(bean.getSTATUS()).getName(), bean.getSTATUS()));
             itemList.add(new ItemDataInfo("审核意见", bean.getCHECK_MEMO(), bean.getCHECK_MEMO()));
+
+            //            "商品 ARTICLE_NAME
+//            包装数量 PACKING_QTY
+//            箱数 BOX_QTY
+//            散数 RET_QTY
+//            箱质押单价 BOXIMPAWN_PRICE
+//            质押金额 IMPAWN_AMT"
+
+            List<String> header = new ArrayList<>();
+            header.add("商品");
+            header.add("包装数量");
+            header.add("箱数");
+            header.add("散数");
+            header.add("箱质押单价");
+            header.add("质押金额");
+
+            List<List<String>> datas = new ArrayList<>();
+            for (int i=0;i<loanApplyDetailResultData.getActionResultsList().size();i++){
+                LoanApplyDetailResultData.ActionResultsListBean bean11 = loanApplyDetailResultData.getActionResultsList().get(i);
+                List<String> data = new ArrayList<>();
+                data.add(bean11.getARTICLE_NAME());
+                data.add(bean11.getPACKING_QTY());
+                data.add(bean11.getBOX_QTY());
+                data.add(bean11.getRET_QTY());
+                data.add(bean11.getBOXIMPAWN_PRICE());
+                data.add(bean11.getIMPAWN_AMT());
+                datas.add(data);
+            }
+            tableDataList = new TableData(header, datas);
+
+
             notifyDataSetChanged();
             if(ApplyStatusEnum.ReviewPass.getValue().equals(bean.getSTATUS())){
                 initReviewBtn(View.VISIBLE, false);
@@ -124,7 +159,7 @@ public class LoadApplyReviewActivity extends BaseReviewActivity {
     public void postHttpReview() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("CONT_NO", CONT_NO);
+            jsonObject.put("Sheet_id", CONT_NO);
             jsonObject.put("UserID", getUserId());
             jsonObject.put("CompanyNo", getCompanyNo());
             jsonObject.put("Check_opinion", getCheckOpinion());
@@ -139,7 +174,7 @@ public class LoadApplyReviewActivity extends BaseReviewActivity {
     public void postHttpVeto() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("CONT_NO", CONT_NO);
+            jsonObject.put("Sheet_id", CONT_NO);
             jsonObject.put("UserID", getUserId());
             jsonObject.put("CompanyNo", getCompanyNo());
             jsonObject.put("Check_opinion", getCheckOpinion());

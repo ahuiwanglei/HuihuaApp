@@ -9,6 +9,9 @@ import com.android.volley.VolleyError;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import butterknife.ButterKnife;
 import online.huihua.suzhou.com.huihuaapp.R;
 import online.huihua.suzhou.com.huihuaapp.common.ApplyStatusEnum;
@@ -16,6 +19,7 @@ import online.huihua.suzhou.com.huihuaapp.common.ContStatusEnum;
 import online.huihua.suzhou.com.huihuaapp.common.HuihuaConfig;
 import online.huihua.suzhou.com.huihuaapp.model.CommonResultData;
 import online.huihua.suzhou.com.huihuaapp.model.ContDetailResultData;
+import online.huihua.suzhou.com.huihuaapp.model.LoanApplyDetailResultData;
 import online.huihua.suzhou.com.huihuaapp.ui.BaseReviewActivity;
 import online.huihua.suzhou.com.huihuaapp.util.LogUtil;
 import online.huihua.suzhou.com.huihuaapp.util.ObjectMapperFactory;
@@ -42,7 +46,7 @@ public class PrePayReviewActivity extends BaseReviewActivity {
 
         initBackBtn();
 
-        setTitle("提现还款申请详情");
+        setTitle("提前还款详情");
 
         getData();
 
@@ -85,7 +89,7 @@ public class PrePayReviewActivity extends BaseReviewActivity {
             itemList.add(new ItemDataInfo("服务费比例", bean.getSERVICE_PROP(), bean.getSERVICE_PROP()));
             itemList.add(new ItemDataInfo("保证金比例", bean.getOVERDUE_PROP(), bean.getOVERDUE_PROP()));
 
-            //            逾期利息 OVERDUE_PROP
+            //逾期利息 OVERDUE_PROP
 //            逾期违约比例 PENALTY_PROP
 //            首期还款日期 BEGIN_DATE
 //
@@ -106,6 +110,35 @@ public class PrePayReviewActivity extends BaseReviewActivity {
             itemList.add(new ItemDataInfo("合同审核日期", bean.getCHECKUP_DATE(), bean.getCHECKUP_DATE()));
             itemList.add(new ItemDataInfo("状态", ContStatusEnum.findKey(bean.getSTATUS()).getName(), bean.getSTATUS()));
             itemList.add(new ItemDataInfo("审核意见", bean.getCHECK_MEMO(), bean.getCHECK_MEMO()));
+
+//            "期数 PERIOD
+//            预计还款日 REPAY_DATE
+//            本金 PRINCIPAL
+//            实际还款日 REALPAY_DATE
+//            实收金额 REALPAY_AMT
+//            实收补偿金 REALPREPAY_CPS"
+//            List<String> header = new ArrayList<>();
+//            header.add("期数");
+//            header.add("预计还款日");
+//            header.add("本金");
+//            header.add("实际还款日");
+//            header.add("实收金额");
+//            header.add("实收补偿金");
+//
+//            List<List<String>> datas = new ArrayList<>();
+//            for (int i=0;i< contDetailResultData.getActionResultsList().size();i++){
+//                ContDetailResultData.ActionResultsListBean bean11 = contDetailResultData.getActionResultsList().get(i);
+//                List<String> data = new ArrayList<>();
+//                data.add(bean11.getBORROW_PERIOD());
+//                data.add(bean11.getPeP());
+//                data.add(bean11.getPRI());
+//                data.add(bean11.getRET_QTY());
+//                data.add(bean11.getBOXIMPAWN_PRICE());
+//                data.add(bean11.getIMPAWN_AMT());
+//                datas.add(data);
+//            }
+//            tableDataList = new TableData(header, datas);
+
             notifyDataSetChanged();
             if(ApplyStatusEnum.ReviewPass.getValue().equals(bean.getSTATUS())){
                 initReviewBtn(View.VISIBLE, false);
@@ -128,7 +161,7 @@ public class PrePayReviewActivity extends BaseReviewActivity {
     public void postHttpReview() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("CONT_NO", CONT_NO);
+            jsonObject.put("Sheet_id", CONT_NO);
             jsonObject.put("UserID", getUserId());
             jsonObject.put("CompanyNo", getCompanyNo());
             jsonObject.put("Check_opinion", getCheckOpinion());
@@ -143,7 +176,7 @@ public class PrePayReviewActivity extends BaseReviewActivity {
     public void postHttpVeto() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("CONT_NO", CONT_NO);
+            jsonObject.put("Sheet_id", CONT_NO);
             jsonObject.put("UserID", getUserId());
             jsonObject.put("CompanyNo", getCompanyNo());
             jsonObject.put("Check_opinion", getCheckOpinion());

@@ -70,7 +70,7 @@ public class DepositReviewActivity extends BaseReviewActivity {
         if (reqcode == GET_Data_Tag) {
             DepositDetailResultData contDetailResultData = ObjectMapperFactory.convertJsonToObject(result.toString(), DepositDetailResultData.class);
             DepositDetailResultData.ActionResultsListBean bean = contDetailResultData.getActionResultsList().get(0);
-            itemList.add(new ItemDataInfo("客户", bean.getOWNER_NAME(), bean.getOWNER_NAME()));
+            itemList.add(new ItemDataInfo("单号", bean.getOWNER_NAME(), bean.getOWNER_NAME()));
             itemList.add(new ItemDataInfo("单据日期", bean.getSHEET_DATE(), bean.getSHEET_DATE()));
             itemList.add(new ItemDataInfo("客户", bean.getOWNER_NAME(), bean.getOWNER_NAME()));
             itemList.add(new ItemDataInfo("行业", bean.getINDUSTRY_NAME(), bean.getINDUSTRY_NAME()));
@@ -79,11 +79,14 @@ public class DepositReviewActivity extends BaseReviewActivity {
 
             itemList.add(new ItemDataInfo("借款金额", bean.getBORROW_AMT(), bean.getBORROW_AMT()));
             itemList.add(new ItemDataInfo("保证金", bean.getDEPOSIT_AMT(), bean.getDEPOSIT_AMT()));
+            itemList.add(new ItemDataInfo("退还金额",bean.getRETURN_AMT(), bean.getRETURN_AMT()));
+            itemList.add(new ItemDataInfo("扣除金额 ", bean.getDEDUCT_AMT(), bean.getDEDUCT_AMT()));
             itemList.add(new ItemDataInfo("最后还款日", bean.getENDPAY_DATE(), bean.getENDPAY_DATE()));
 
             itemList.add(new ItemDataInfo("审批状态", bean.getCHECK_STATUS(), bean.getCHECK_STATUS()));
-            itemList.add(new ItemDataInfo("状态", ContStatusEnum.findKey(bean.getSTATUS()).getName(), bean.getSTATUS()));
             itemList.add(new ItemDataInfo("审核意见", bean.getCHECK_MEMO(), bean.getCHECK_MEMO()));
+            itemList.add(new ItemDataInfo("状态", ContStatusEnum.findKey(bean.getSTATUS()).getName(), bean.getSTATUS()));
+
             notifyDataSetChanged();
             if(ApplyStatusEnum.ReviewPass.getValue().equals(bean.getSTATUS())){
                 initReviewBtn(View.VISIBLE, false);
@@ -106,7 +109,7 @@ public class DepositReviewActivity extends BaseReviewActivity {
     public void postHttpReview() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("CONT_NO", CONT_NO);
+            jsonObject.put("Sheet_id", CONT_NO);
             jsonObject.put("UserID", getUserId());
             jsonObject.put("CompanyNo", getCompanyNo());
             jsonObject.put("Check_opinion", getCheckOpinion());
@@ -121,7 +124,7 @@ public class DepositReviewActivity extends BaseReviewActivity {
     public void postHttpVeto() {
         JSONObject jsonObject = new JSONObject();
         try {
-            jsonObject.put("CONT_NO", CONT_NO);
+            jsonObject.put("Sheet_id", CONT_NO);
             jsonObject.put("UserID", getUserId());
             jsonObject.put("CompanyNo", getCompanyNo());
             jsonObject.put("Check_opinion", getCheckOpinion());
